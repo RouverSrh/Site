@@ -13,7 +13,7 @@
       overflow-x: hidden;
     }
 
-    /* --- FOTOS DECORADAS NO FUNDO --- */
+    /* --- FOTOS NO FUNDO --- */
     .bg-foto {
       position: absolute;
       width: 220px; 
@@ -30,7 +30,7 @@
     .f3 { top: 60vh; left: 8%; transform: rotate(8deg); }
     .f4 { top: 85vh; right: 10%; transform: rotate(-12deg); }
 
-    /* --- CHUVA DE CORAÇÕES SEM TREMEDEIRA --- */
+    /* --- CHUVA SEM TREMEDEIRA --- */
     .heart-rain {
       position: fixed;
       top: -10%;
@@ -45,7 +45,7 @@
       background: #4da3ff;
       transform: rotate(45deg);
       opacity: 0;
-      /* Movimento de queda suave */
+      /* queda suave */
       animation: fall linear forwards;
     }
     .heart-particle::before, .heart-particle::after {
@@ -63,7 +63,7 @@
       100% { transform: translateY(110vh) rotate(405deg); opacity: 0; }
     }
 
-    /* --- ESTILO DOS SECTIONS --- */
+    /* --- ESTILO DO SECTIONS --- */
     header {
       text-align: center;
       padding: 60px 20px;
@@ -152,11 +152,11 @@
 
   <header>
     <h1>Sarah, Eu Amo Você</h1>
-    <p>Preparei algo especial para o seu coração...</p>
+    <p>Você Sempre Será o Meu Amor...</p>
     
     <div class="illustrations">
       <img src="um.jpeg" alt="Ilustração 1" />
-      <img src="dois.jpeg" alt="Ilustração 2" />
+      <img src="dois.png" alt="Ilustração 2" />
     </div>
 
     <button class="cta" onclick="abrirCarta()">Abra a carta 💙</button>
@@ -169,17 +169,30 @@
 
   <div id="conteudo-carta">
     <section>
-      <h2>Sobre Nós</h2>
-      <p>Você chegou como o azul do céu depois da tempestade: trazendo paz, esperança e um silêncio bom.</p>
+      <h2>Cartinha 💙</h2>
+      
+      <p>Meu Amor, eu amo você de um jeito que não consigo explicar, você é tudo pra mim.</p>
+      <p>Você me faz ter sentimentos que nunca senti, aquela felcidade, anseiando de te ver.</p>
+      <p>Me faz me matar de saudades, envergonhado com seus palavras carinhosas, mas</p>
+      <p>independente de todos os sentimentos o Amor, o Amor que tenho por você é o que prevalece.</p>
+      <p>O meu dia melhora quando vejo você sorrindo, sendo feliz.</p>
+      <p>Quero poder ter fazer feliz e amada pro resto da nossas vidas, juntos. Te amo minha Flor</p>
+
     </section>
 
     <section>
-      <h2>O Que Eu Amo em Você</h2>
-      <p>Amo como o azul combina com você — porque você é infinita, profunda e rara.</p>
+      <h2>Foi do Nada</h2>
+      <p>E foi do nada que apareceu,</p>
+      <p>no asfalto, uma flor nasceu.</p>
+      <p>E, assim como a sua presença,</p>
+      <p>floresceu a rua,</p>
+      <p>meu amor,</p>
+      <p>e minha vida toda é tua.</p>
+
     </section>
 
     <footer style="text-align: center; padding: 40px; color: #0a3d62;">
-      <p>Feito com amor infinito por você, Sarah 💙</p>
+      <p>Feito com amor infinito pelo DinoAmor, Te adoro Sarah 💙</p>
     </footer>
   </div>
 
@@ -204,7 +217,7 @@
       
       container.appendChild(heart);
       
-      // Remove o coração após a queda
+      // Remove coração após queda
       setTimeout(() => { heart.remove(); }, fallDuration * 1000);
     }
 
@@ -217,7 +230,7 @@
       vinil.style.display = 'block';
       audio.play();
 
-      // Cria corações em intervalos ligeiramente variados para não amontoar
+      // Cria corações em intervalos ligeiramente variados/não amontoar
       setInterval(createHeart, 300);
 
       setTimeout(() => {
@@ -228,4 +241,3 @@
 </body>
 
 </html>
-
