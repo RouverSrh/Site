@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Sarah, Meu Amor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #b3d9ff, #e6f2ff);
+      color: #0a2a43;
+      overflow-x: hidden;
+    }
+
+    /* --- FOTOS DECORADAS NO FUNDO --- */
+    .bg-foto {
+      position: absolute;
+      width: 220px; 
+      height: auto;
+      opacity: 0.15;
+      z-index: -1;
+      border-radius: 5px;
+      border: 8px solid white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      pointer-events: none;
+    }
+    .f1 { top: 5vh; left: 5%; transform: rotate(-10deg); }
+    .f2 { top: 25vh; right: 5%; transform: rotate(12deg); }
+    .f3 { top: 60vh; left: 8%; transform: rotate(8deg); }
+    .f4 { top: 85vh; right: 10%; transform: rotate(-12deg); }
+
+    /* --- CHUVA DE CORAÇÕES SEM TREMEDEIRA --- */
+    .heart-rain {
+      position: fixed;
+      top: -10%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+    .heart-particle {
+      position: absolute;
+      background: #4da3ff;
+      transform: rotate(45deg);
+      opacity: 0;
+      /* Movimento de queda suave */
+      animation: fall linear forwards;
+    }
+    .heart-particle::before, .heart-particle::after {
+      content: ''; position: absolute;
+      background: inherit; border-radius: 50%;
+      width: 100%; height: 100%;
+    }
+    .heart-particle::before { left: -50%; }
+    .heart-particle::after { top: -50%; }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(110vh) rotate(405deg); opacity: 0; }
+    }
+
+    /* --- ESTILO DOS SECTIONS --- */
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    header h1 { font-size: 2.8em; margin-bottom: 10px; z-index: 10; text-shadow: 0 0 15px rgba(77,163,255,0.5); }
+
+    .illustrations{display:flex;justify-content:center;gap:24px;margin:20px 0 40px; z-index: 10;}
+    .illustrations img{width:120px; border-radius: 15px; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.1));}
+    
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(10,42,67,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- VINIL --- */
+    .vinyl-container {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+      display: none;
+      text-align: center;
+    }
+    .vinyl {
+      width: 70px; height: 70px;
+      background: #111;
+      border-radius: 50%;
+      border: 3px solid #222;
+      position: relative;
+      animation: spin 3s linear infinite;
+      background-image: repeating-radial-gradient(circle, #333, #333 2px, #111 4px, #111 5px);
+    }
+    .vinyl::after {
+      content: "💙";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #4da3ff;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 10px;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .cta {
+      padding: 16px 32px;
+      border-radius: 50px;
+      background: #4da3ff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(77,163,255,0.4);
+      z-index: 10;
+    }
+
+    #conteudo-carta { display: none; opacity: 0; transition: 1s; }
+    #conteudo-carta.visivel { display: block; opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <img src="foto1.jpg" class="bg-foto f1">
+  <img src="foto2.jpg" class="bg-foto f2">
+  <img src="foto3.jpg" class="bg-foto f3">
+  <img src="foto4.jpg" class="bg-foto f4">
+
+  <audio id="meuAudio" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="heart-rain" id="rainContainer"></div>
+
+  <header>
+    <h1>Sarah, Eu Amo Você</h1>
+    <p>Preparei algo especial para o seu coração...</p>
+    
+    <div class="illustrations">
+      <img src="um.jpeg" alt="Ilustração 1" />
+      <img src="dois.png" alt="Ilustração 2" />
+    </div>
+
+    <button class="cta" onclick="abrirCarta()">Abra a carta 💙</button>
+  </header>
+
+  <div class="vinyl-container" id="vinil">
+    <div class="vinyl"></div>
+    <p style="font-size: 10px; margin-top: 5px; color: #0a3d62; font-weight: bold;">Eternamente... 💙</p>
+  </div>
+
+  <div id="conteudo-carta">
+    <section>
+      <h2>Sobre Nós</h2>
+      <p>Você chegou como o azul do céu depois da tempestade: trazendo paz, esperança e um silêncio bom.</p>
+    </section>
+
+    <section>
+      <h2>O Que Eu Amo em Você</h2>
+      <p>Amo como o azul combina com você — porque você é infinita, profunda e rara.</p>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: #0a3d62;">
+      <p>Feito com amor infinito por você, Sarah 💙</p>
+    </footer>
+  </div>
+
+  <script>
+    function createHeart() {
+      const container = document.getElementById('rainContainer');
+      const heart = document.createElement('div');
+      heart.classList.add('heart-particle');
+      
+      // Posição horizontal aleatória
+      const startLeft = Math.random() * 100;
+      heart.style.left = startLeft + 'vw';
+      
+      // Tamanho aleatório
+      const size = Math.random() * 10 + 10 + 'px';
+      heart.style.width = size; 
+      heart.style.height = size;
+      
+      // Duração da queda aleatória
+      const fallDuration = Math.random() * 3 + 5; // Entre 5s e 8s
+      heart.style.animationDuration = fallDuration + 's';
+      
+      container.appendChild(heart);
+      
+      // Remove o coração após a queda
+      setTimeout(() => { heart.remove(); }, fallDuration * 1000);
+    }
+
+    function abrirCarta() {
+      const conteudo = document.getElementById('conteudo-carta');
+      const vinil = document.getElementById('vinil');
+      const audio = document.getElementById('meuAudio');
+      
+      conteudo.classList.add('visivel');
+      vinil.style.display = 'block';
+      audio.play();
+
+      // Cria corações em intervalos ligeiramente variados para não amontoar
+      setInterval(createHeart, 300);
+
+      setTimeout(() => {
+        conteudo.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  </script>
+</body>
+</html>
